@@ -48,11 +48,16 @@ namespace ConsoleApp1
             // }
 
             CarManager carManager = new CarManager(new EFCarDal());
-            foreach (var car in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+            if (result.Success==true)
             {
-                Console.WriteLine(car.Id +"/"+ car.BrandName + "/" + car.ColorName + "/" + car.DailyPrice);
-            }
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.BrandName+"/"+car.DailyPrice);
+                }
 
+                Console.WriteLine(result.Message);
+            }
 
 
 
