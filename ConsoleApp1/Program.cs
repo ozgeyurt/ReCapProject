@@ -49,14 +49,20 @@ namespace ConsoleApp1
 
             CarManager carManager = new CarManager(new EFCarDal());
             var result = carManager.GetCarDetails();
-            if (result.Success==true)
+            if (result.Success == true)
             {
                 foreach (var car in result.Data)
                 {
-                    Console.WriteLine(car.BrandName+"/"+car.DailyPrice);
+                    Console.WriteLine(car.BrandName + "/" + car.DailyPrice);
                 }
 
                 Console.WriteLine(result.Message);
+            }
+
+            CustomerManager customerManager = new CustomerManager(new EFCustomerDal());
+            foreach (var customer in customerManager.GetAll())
+            {
+                Console.WriteLine(customer.CompanyName);
             }
 
 
