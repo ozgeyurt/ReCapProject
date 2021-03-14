@@ -21,33 +21,36 @@ public CustomerManager(ICustomerDal customerDal)
         public IResult Add(Customer customer)
         {
             _customerDal.Add(customer);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CustomerAdded);
         }
 
         public IResult Delete(Customer customer)
         {
             _customerDal.Delete(customer);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CustomerDeleted);
         }
 
-        public List<Customer> GetAll()
+        public IDataResult <List<Customer>> GetAll()
         {
-            return _customerDal.GetAll();
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.CustomerrsListed);
         }
 
-        public IDataResult<List<Customer>> GetById(int customerId)
+        public IDataResult<Customer> GetById(int customerId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Customer>(_customerDal.Get(cs => cs.CustomerId == customerId));
         }
 
         public IDataResult<List<CustomerDetailDto>> GetCustomerDetails()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails());
         }
 
         public IResult Update(Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDal.Update(customer);
+            return new SuccessResult(Messages.CustomerUpdated);
         }
+
+        
     }
 }

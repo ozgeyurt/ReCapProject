@@ -10,72 +10,84 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+
+
             //CarManager carManager = new CarManager(new EFCarDal());
-            //foreach (var car in carManager.GetAll())
+            //var result = carManager.GetCarDetails();
+            //if (result.Success == true)
             //{
-            //    Console.WriteLine(car.ModelYear);
+            //    foreach (var car in result.Data)
+            //    {
+            //        Console.WriteLine(car.BrandName + "/" + car.DailyPrice);
+            //    }
+
+            //    Console.WriteLine(result.Message);
+            //}
+
+            //private static void BrandColor()
+            //{
+            //    BrandManager brandManager = new BrandManager(new EFBrandDal());
+            //    foreach (var brand in brandManager.GetAll())
+            //    {
+            //        Console.WriteLine(brand.BrandName);
+            //    }
+
+            //    ColorManager colorManager = new ColorManager(new EFColorDal());
+            //    foreach (var color in colorManager.GetAll())
+            //    {
+            //        Console.WriteLine(color.ColorName);
+            //    }
             //}
 
 
             //CarManager carManager = new CarManager(new EFCarDal());
-            //foreach (var car in carManager.GetCarsByBrandId(3))
-            //{
-            //    Console.WriteLine(car.DailyPrice);
-            //}
+            //carManager.Add(new Entities.Concrete.Car { Id = 11, BrandId = 1, ColorId = 3, ModelYear = 2020, DailyPrice = 1000, Description = "Mercedes A200 otomatik" });
 
-            //CarManager carManager = new CarManager(new EFCarDal());
-            //foreach (var car in carManager.GetCarsByColorId(5))
+
+            //private static void Get()
             //{
-            //    Console.WriteLine(car.DailyPrice);
-            //}
+            //    CarManager carManager = new CarManager(new EFCarDal());
+            //    foreach (var car in carManager.GetAll())
+            //    {
+            //        Console.WriteLine(car.ModelYear);
+            //    }
 
 
             //    CarManager carManager = new CarManager(new EFCarDal());
-            //    carManager.Add(new Entities.Concrete.Car { Id = 11, BrandId = 1, ColorId = 3, ModelYear = 2020, DailyPrice = 1000, Description = "Mercedes A200 otomatik" });
-            //
+            //    foreach (var car in carManager.GetCarsByBrandId(3))
+            //    {
+            //        Console.WriteLine(car.DailyPrice);
+            //    }
+
+            //    CarManager carManager = new CarManager(new EFCarDal());
+            //    foreach (var car in carManager.GetCarsByColorId(5))
+            //    {
+            //        Console.WriteLine(car.DailyPrice);
+            //    }
+            //}
 
 
-            //BrandManager brandManager = new BrandManager(new EFBrandDal());
-            // foreach (var brand in brandManager.GetAll())
-            // {
-            //     Console.WriteLine(brand.BrandName);
-            // }
+            //UserManager userManager = new UserManager(new EFUserDal());
+            //foreach (var user in userManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(user.FirstName + user.LastName + user.Email);
+            //}
+            //CustomerManager customerManager = new CustomerManager(new EFCustomerDal());
+            //foreach (var customer in customerManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(customer.CompanyName);
+            //}
 
-            // ColorManager colorManager = new ColorManager(new EFColorDal());
-            // foreach (var color in colorManager.GetAll())
-            // {
-            //     Console.WriteLine(color.ColorName);
-            // }
 
-            CarManager carManager = new CarManager(new EFCarDal());
-            var result = carManager.GetCarDetails();
-            if (result.Success == true)
+
+            RentalManager rentalManager = new RentalManager(new EFRentalDal());
+            foreach (var rental in rentalManager.GetRentalDetails().Data)
             {
-                foreach (var car in result.Data)
-                {
-                    Console.WriteLine(car.BrandName + "/" + car.DailyPrice);
-                }
-
-                Console.WriteLine(result.Message);
+                Console.WriteLine(rental.FullName + ' ' + rental.CompanyName + ' ' + rental.Description + ' ' + rental.Description + ' ' + rental.RentDate + ' ' + rental.ReturnDate);
             }
-
-            CustomerManager customerManager = new CustomerManager(new EFCustomerDal());
-            foreach (var customer in customerManager.GetAll())
-            {
-                Console.WriteLine(customer.CompanyName);
-            }
-
-
-
-
-
-
-
 
         }
 
 
     }
-
-
-}
+    }

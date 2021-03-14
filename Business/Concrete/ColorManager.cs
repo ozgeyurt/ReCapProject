@@ -42,5 +42,10 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Color>>(_colorDal.GetAll());
         }
+
+        public IEnumerable<object> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
